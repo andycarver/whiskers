@@ -1,21 +1,33 @@
-<h1>Welcome {{user.name}}</h1>
-<input type="text" placeholder="Search">
+<h1>Welcome {{ curr_user.name }}</h1>
+{{curr_user._id}}
+<p><a href="/logout">Log out </a></p>
+<input type="text" placeholder="Search" ng-model='search.title'>
 <button>Search</button>
+<div ng-controller='thread_c'>
 <table>
     <tr>
         <th>Category</th>
-        <th>Topic</th>
+        <th>Thread</th>
         <th>User Name</th>
         <th>Posts</th>
     </tr>
-    <tr>
-        <td></td>
+    <tr ng-repeat='thread in all_threads | filter:search'>
+        <td>{{ thread.category }}</td>
+        <td>{{ thread.title }}</td>
+        <td><a href="#!/user/{{ thread._user._id }}">{{ thread._user.name }}</a></td>
+        <td>{{ thread._postz.length }}</td>
     </tr>
 </table>
-<h3>Add a new Topic</h3>
-<input type="text" placeholder="Topic">
-<input type="text" placeholder="Description">
-<select>
-    <option value=""></option>
+<h3>Add a new Thread</h3>
+<input type="text" placeholder="Title" ng-model='thread.title'>
+<input type="text" placeholder="Description" ng-model='thread.desc'>
+<select ng-model='thread.category'>
+    <option value="Mean Cat">Mean Cat</option>
+    <option value="HTML">HTML</option>
+    <option value="Pleb Development">Pleb Development</option>
+    <option value="MySQL Twerkbench">MySQL Twerkbench</option>
+    <option value="Ruby on Snails">Ruby on Snails</option>
+    <option value="Yarn'n it">Yarn'n It</option>  
 </select>
-<button type="">Submit</button>
+<button ng-click='add_thread()'>Submit</button>
+</div>

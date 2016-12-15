@@ -4,7 +4,7 @@ let mongoose = require('mongoose'),
         desc: String,
         category: String,
         _user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
-        _posts: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Post' }]
+        _postz: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Post' }]
     });
 
 mongoose.model('Thread', threadSchema)

@@ -8,9 +8,14 @@ app.config(function($routeProvider) {
         })
         .when('/dash', {
             templateUrl: 'partials/dash.html',
-            // controller: 'userController'
+            controller: 'userController'
+        })
+        .when('/user/:id', {
+            templateUrl: 'partials/user.html',
+            controller: 'userController'
         })
         .otherwise({
             redirectTo: '/login'
         })
+
 })
